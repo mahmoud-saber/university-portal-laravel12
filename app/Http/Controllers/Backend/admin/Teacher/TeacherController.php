@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\admin\Teacher;
 
 use App\Models\User;
-use App\Models\Course;
 use App\Enums\UserRole;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
-class AdminController extends Controller
+class TeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -107,4 +106,7 @@ class AdminController extends Controller
 
         return redirect()->route('teachers.index')->with('danger', '🗑️ Teacher deleted successfully.');
     }
+    ////////////////////////////////////////////////////////////////
+
+
 }

@@ -5,8 +5,8 @@
 @section('content')
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h3>👨‍🏫 Teachers</h3>
-        <a href="{{ route('teachers.create') }}" class="btn btn-success">➕ Add Teacher</a>
+        <h3>👨‍🏫 Student</h3>
+        <a href="{{ route('students.create') }}" class="btn btn-success">➕ Add Teacher</a>
     </div>
 
     {{-- ✅ Flash Messages --}}
@@ -33,16 +33,16 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($teachers as $teacher)
+                @forelse ($students as $student)
                     <tr>
-                        <td>{{ $teacher->name }}</td>
-                        <td>{{ $teacher->email }}</td>
-                        <td>{{ $teacher->created_at->format('Y-m-d H:i') }}</td>
+                        <td>{{ $student->name }}</td>
+                        <td>{{ $student->email }}</td>
+                        <td>{{ $student->created_at->format('Y-m-d H:i') }}</td>
                         <td>
-                            <a href="{{ route('teachers.edit', $teacher->id) }}" class="btn btn-sm btn-primary" title="Edit">
+                            <a href="{{ route('students.edit', $student->id) }}" class="btn btn-sm btn-primary" title="Edit">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <form action="{{ route('teachers.destroy', $teacher->id) }}" method="POST" style="display:inline-block;">
+                            <form action="{{ route('students.destroy', $student->id) }}" method="POST" style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-sm btn-danger" title="Delete" onclick="return confirm('Are you sure?')">
@@ -53,7 +53,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4">No teachers found.</td>
+                        <td colspan="4">No students found.</td>
                     </tr>
                 @endforelse
             </tbody>

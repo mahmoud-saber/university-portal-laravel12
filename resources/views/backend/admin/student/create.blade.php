@@ -6,7 +6,7 @@
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h3>➕ Add Teacher</h3>
-        <a href="{{ route('teachers.index') }}" class="btn btn-secondary">⬅️ Back</a>
+        <a href="{{ route('students.index') }}" class="btn btn-secondary">⬅️ Back</a>
     </div>
 
     {{-- Display validation errors --}}
@@ -22,7 +22,7 @@
     @endif
 
     {{-- Create Form --}}
-    <form action="{{ route('teachers.store') }}" method="POST">
+    <form action="{{ route('students.store') }}" method="POST">
         @csrf
 
         <div class="mb-3">
@@ -40,7 +40,7 @@
             <input type="password" name="password" class="form-control" required>
         </div>
 
-        <button type="submit" class="btn btn-success">Save Teacher</button>
+        <button type="submit" class="btn btn-success">Save Student</button>
     </form>
 </div>
 @endsection
