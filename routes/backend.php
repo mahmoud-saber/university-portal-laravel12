@@ -26,4 +26,5 @@ Route::resource('teachers', TeacherController::class);
 Route::resource('students', StudentController::class);
 Route::resource('courses', CourseController::class);
 ///////////////////////////////////////////////
-    Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
+Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
+/////////////////////////////////////////////////////////////

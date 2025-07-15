@@ -1,4 +1,4 @@
 @extends('backend.layout.index')
-@section('contant')
-Teacher
+@section('content')
+    @include('backend.layout.partials.main')
 @endsection
