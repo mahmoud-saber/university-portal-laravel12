@@ -8,12 +8,12 @@ class StoreCourseRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true; // أو تخصيصها بناءً على صلاحيات المستخدم
+        return true;
     }
 
     public function rules(): array
     {
-        $courseId = $this->route('course'); // useful for update
+        $courseId = $this->route('course'); 
 
         return [
             'name' => ['required', 'string', 'max:255'],

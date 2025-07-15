@@ -7,6 +7,7 @@ use App\Enums\UserRole;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\StoreUserRequest;
 
 class TeacherController extends Controller
 {
@@ -36,13 +37,9 @@ class TeacherController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:6',
-        ]);
+        $request->validate();
 
         User::create([
             'name' => $request->name,
@@ -74,15 +71,11 @@ class TeacherController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreUserRequest $request, string $id)
     {
         $teacher = User::where('role', 'teacher')->findOrFail($id);
 
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $teacher->id,
-            'password' => 'nullable|string|min:6',
-        ]);
+        $request->validate();
 
         $teacher->name = $request->name;
         $teacher->email = $request->email;

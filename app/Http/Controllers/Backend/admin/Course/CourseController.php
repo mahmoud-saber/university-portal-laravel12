@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Enums\UserRole;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCourseRequest;
 
 class CourseController extends Controller
 {
@@ -29,13 +30,9 @@ class CourseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCourseRequest $request)
     {
-        $request->validate([
-            'name'        => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'teacher_id'  => 'required|exists:users,id',
-        ]);
+        $request->validate();
 
         Course::create([
             'name'        => $request->name,
@@ -66,15 +63,11 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-     public function update(Request $request, string $id)
+     public function update(StoreCourseRequest $request, string $id)
     {
         $course = Course::findOrFail($id);
 
-        $request->validate([
-            'name'        => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'teacher_id'  => 'required|exists:users,id',
-        ]);
+        $request->validate();
 
         $course->update([
             'name'        => $request->name,
